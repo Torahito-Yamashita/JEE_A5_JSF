@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>TorahitoYamashita_YunkuiPan</title>
+</h:head> 
+<body> 
+	<h:form id="login">
+		<p>Give your name:
+			<h:inputText id="player" value="#{gameBean.player}" >
+				<f:validateLength minimum = "1" />
+			</h:inputText>
+		</p>
+		<p>Enter a bet in whole dollars:
+			<h:inputText id="bet" value="#{gameBean.bet}" >
+				<f:validateLongRange minimum="1" maximum="100" />
+			</h:inputText>
+			to 
+			<h:commandButton id="Start" value="Start"
+			actionListener="#{gameBean.start()}"
+			action="#{gameBean.getNextPage()}" />
+			playing.
+		</p>
+	</h:form>
+	<h:messages id="messages" style="color:red" />
+</body> 
+</html>
