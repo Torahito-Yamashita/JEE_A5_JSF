@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>TorahitoYamashita_YunkuiPan</title>
+</h:head> 
+<body> 
+	<h1>Sorry ******: TorahitoYamashita_YunkuiPan won</h1>
+	<p>Guessed your number ****** in ****** tries.</p>
+	<p>You lost 
+		<h:outputText value="#{gameBean.bet}">
+			<f:convertNumber type="currency" currencySymbol="$" />
+		</h:outputText> on this game.
+	</p>
+	<p>Please pay the total owing $5.00 when you are 
+		<h:commandButton id="done" value="Done"
+		actionListener="#{gameBean.done() }" />
+	</p>
+	<p>or enter a new bet 
+		<h:inputText id="bet" value="#{gameBean.bet}" >
+			<f:validateLongRange minimum="1" maximum="100" />
+		</h:inputText>
+		to <h:commandButton id="playAgain" value="Play Again"
+		actionListener="#{gameBean.playAgain() }" />
+	</p>
+</body> 
+</html>

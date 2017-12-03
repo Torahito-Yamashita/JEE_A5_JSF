@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 version="3.1">
-<display-name>TorahitoYamashita_YuikuiPan_GuessingGameJSF</display-name>
+<display-name>TorahitoYamashita_YunkuiPan_GuessingGameJSF</display-name>
 <servlet>
 <servlet-name>Faces Servlet</servlet-name>
 <servlet-class>javax.faces.webapp.FacesServlet</servletclass>

@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>TorahitoYamashita_YunkuiPan</title>
+</h:head> 
+<body> 
+	<h1>Guess number ******:</h1>
+	<h2>Is your number ******?</h2>
+	<p>Please tell me whether this number</p>
+	<h:commandButton id="correct" value="Correct"
+	actionListener="#{gameBean.correct() }"
+	action="#{ gameBean.getNextPage() }" />
+	<h:commandButton id="tooHigh" value="Too High"
+	actionListener="#{gameBean.tooHigh() }" />
+	<h:commandButton id="tooLow" value="Too Low"
+	actionListener="#{gameBean.tooLow() }" />
+</body> 
+</html>
