@@ -8,8 +8,8 @@
 	<title>TorahitoYamashita_YunkuiPan</title>
 </h:head> 
 <body> 
-	<h1>Guess number ******:</h1>
-	<h2>Is your number ******?</h2>
+	<h1>Guess number: #{gameBean.count}</h1>
+	<h2>Is your number #{gameBean.guess}?</h2>
 	<p>Please tell me whether this number</p>
 	<h:commandButton id="correct" value="Correct"
 	actionListener="#{gameBean.correct() }"

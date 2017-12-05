@@ -21,7 +21,7 @@
 			</h:inputText>
 		</p>
 		<p>Enter a bet in whole dollars:
-			<h:inputText id="bet" value="#{gameBean.bet}" >
+			<h:inputText id="bet" value="#{gameBean.currentBetAmount}" >
 				<f:validateLongRange minimum="1" maximum="100" />
 			</h:inputText>
 			to 
