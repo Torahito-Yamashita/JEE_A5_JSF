@@ -8,6 +8,7 @@
 	<title>TorahitoYamashita_YunkuiPan</title>
 </h:head> 
 <body> 
+	<h:form>
 	<h1>Sorry #{gameBean.player}: TorahitoYamashita_YunkuiPan won</h1>
 	<p>Guessed your number #{gameBean.guess} in #{gameBean.count} tries.</p>
 	<p>You lost 
@@ -15,16 +16,19 @@
 			<f:convertNumber type="currency" currencySymbol="$" />
 		</h:outputText> on this game.
 	</p>
-	<p>Please pay the total owing $5.00 when you are 
+	<p>Please pay the total owing \$#{gameBean.totalBetAmount} when you are 
 		<h:commandButton id="done" value="Done"
-		action="index" />
+		actionListener="#{gameBean.done() }"
+		action="#{gameBean.getNextPage()}" />
 	</p>
 	<p>or enter a new bet 
 		<h:inputText id="bet" value="#{gameBean.currentBetAmount}" >
 			<f:validateLongRange minimum="1" maximum="100" />
 		</h:inputText>
 		to <h:commandButton id="playAgain" value="Play Again"
-		actionListener="#{gameBean.start() }" />
+		actionListener="#{gameBean.start() }"
+		action="#{gameBean.getNextPage()}" />
 	</p>
+	</h:form>
 </body> 
 </html>

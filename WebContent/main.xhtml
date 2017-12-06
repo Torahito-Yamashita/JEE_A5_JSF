@@ -8,6 +8,7 @@
 	<title>TorahitoYamashita_YunkuiPan</title>
 </h:head> 
 <body> 
+	<h:form>
 	<h1>Guess number: #{gameBean.count}</h1>
 	<h2>Is your number #{gameBean.guess}?</h2>
 	<p>Please tell me whether this number</p>
@@ -15,8 +16,11 @@
 	actionListener="#{gameBean.correct() }"
 	action="#{ gameBean.getNextPage() }" />
 	<h:commandButton id="tooHigh" value="Too High"
-	actionListener="#{gameBean.tooHigh() }" />
+	actionListener="#{gameBean.tooHigh() }" 
+	action="#{gameBean.getNextPage()}" />
 	<h:commandButton id="tooLow" value="Too Low"
-	actionListener="#{gameBean.tooLow() }" />
+	actionListener="#{gameBean.tooLow() }" 
+	action="#{gameBean.getNextPage()}" />
+	</h:form>
 </body> 
 </html>

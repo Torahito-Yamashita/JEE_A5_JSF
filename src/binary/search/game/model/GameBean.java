@@ -24,10 +24,12 @@ public class GameBean implements Serializable {
 	
 	// Create no-arg constructor
 	public GameBean() {
+		System.out.println("!!!!! GameBean construtour!!!!");
 	}
 	
 	// Define getter and setter methods
 	public String getPlayer() {
+		System.out.println("!!!!! GameBean getPlayer!!!!");
 		return player;
 	}
 
@@ -36,6 +38,7 @@ public class GameBean implements Serializable {
 	}
 
 	public String getNextPage() {
+		System.out.println("!!!!! GameBean getNextPage!!!!");
 		return nextPage;
 	}
 
@@ -78,7 +81,7 @@ public class GameBean implements Serializable {
 	// Start method
 	public void start() {
 		ng = new NumberGuesser();
-		nextPage = "main";
+		setNextPage("main");
 		try {
 			guess = ng.firstGuess();
 			count = ng.getGuessCount();
@@ -88,7 +91,7 @@ public class GameBean implements Serializable {
 	}
 
 	// Game lost method
-	private void gameLost() {
+	public void gameLost() {
 		setNextPage("error");
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		FacesMessage facesMessage = new FacesMessage("Did you change your number mid-game"
@@ -99,28 +102,37 @@ public class GameBean implements Serializable {
 	// Correct method
 	public void correct() {
 		setNextPage("correct");
-		getTotalBetAmount();
-		getCurrentBetAmount();
+		guess = ng.getLastGuess();
 		totalBetAmount = totalBetAmount + currentBetAmount;
-		setTotalBetAmount(totalBetAmount);
 	}
 
 	// Too high method
-	public void tooHigh() throws GameLostException {
-		ng = new NumberGuesser();
-		guess = ng.guessLower();
-		setGuess(guess);
-		count = ng.getGuessCount();
-		setCount(count);
+	public void tooHigh() {
+		try {
+			count = ng.getGuessCount();
+			guess = ng.guessLower();
+		} catch (GameLostException e) {
+			gameLost();
+		}
 	}
 	
 	// Too low method
-	public void tooLow() throws GameLostException {
-		ng = new NumberGuesser();
-		guess = ng.guessHigher();
-		setGuess(guess);
-		count = ng.getGuessCount();
-		setCount(count);
+	public void tooLow() {
+		try {
+			count = ng.getGuessCount();
+			guess = ng.guessHigher();
+		} catch (GameLostException e) {
+			gameLost();
+		}
+	}
+
+	// Done method
+	public void done() {
+		setNextPage("index");
+		// Initialize information for new user
+		player = "";
+		currentBetAmount = 0;
+		totalBetAmount = 0;
 	}
 }
 
